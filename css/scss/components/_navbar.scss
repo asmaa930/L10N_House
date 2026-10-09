@@ -1,0 +1,174 @@
+@use "../abstracts/" as *;
+
+nav.navbar {
+
+    @include position(fixed, 0px, null, null, 0px, 100);
+    width: 100%;
+    transition: 0.5s;
+
+    //! -----------------------------------------
+
+    &.scrolled {
+        background: #fff;
+        box-shadow: 0 10px 20px -10px $firstColor;
+
+        .navbar-brand img {
+            max-width: 100px;
+
+            @include respond(350) {
+                max-width: 80px;
+            }
+
+            @include respond(850) {
+                max-width: 90px;
+            }
+
+            @include respond(1050) {
+                max-width: 100px;
+            }
+        }
+
+        .navbar-collapse {
+            box-shadow: none;
+        }
+    }
+
+    //! -----------------------------------------
+
+    .navbar-brand img {
+        max-width: 150px;
+        transition: 0.5s;
+
+        @include respond(350) {
+            max-width: 100px;
+        }
+
+        @include respond(850) {
+            max-width: 120px;
+        }
+
+        @include respond(1050) {
+            max-width: 150px;
+        }
+    }
+
+    //! -----------------------------------------
+
+    .navbar-toggler {
+        border: 0;
+
+        @include flex($jc: null, $dir: column);
+        @include distance(45px, 40px);
+
+        position: relative;
+
+        &:focus {
+            box-shadow: none;
+        }
+
+        span {
+            @include distance(70%, 3px);
+
+            border-radius: 5px;
+            background-color: $firstColor;
+
+            position: absolute;
+
+            transform: translateY(-50%);
+            transition: 0.5s;
+
+            &:nth-of-type(1) {
+                top: 25%;
+            }
+
+            &:nth-of-type(2) {
+                top: 50%;
+            }
+
+            &:nth-of-type(3) {
+                top: 75%;
+            }
+        }
+
+
+        &[aria-expanded="true"] {
+            span {
+
+                &:nth-of-type(1),
+                &:nth-of-type(3) {
+                    top: 50%;
+                }
+
+                &:nth-of-type(1) {
+                    transform: rotate(45deg);
+                }
+
+                &:nth-of-type(2) {
+                    opacity: 0;
+                }
+
+                &:nth-of-type(3) {
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+
+    }
+
+
+    //! -----------------------------------------
+
+    .navbar-collapse {
+
+        @include respond(350) {
+            background: #fff;
+            box-shadow: 0 0 10px 2px $firstColor ;
+        }
+
+        @include respond(1050) {
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .nav-link {
+            color: $firstColor;
+            font-weight: 500;
+            position: relative;
+
+            &.active,
+            &.show {
+                color: $firstColor;
+            }
+
+            &::after {
+                @include createEle($w: 0, $h: 3px);
+                @include position(absolute, null, null, -10px, 50%);
+
+                border-radius: 5px;
+                background: $secondColor;
+                transition: 0.5s;
+
+                @include respond(350) {
+                    bottom: -5px;
+                }
+
+                @include respond(1050) {
+                    bottom: -10px;
+                }
+            }
+
+            &:hover::after,
+            &.active::after {
+                width: 100%;
+                left: 0;
+            }
+
+            @include respond(350) {
+                width: fit-content;
+                margin: auto;
+            }
+
+        }
+    }
+
+}

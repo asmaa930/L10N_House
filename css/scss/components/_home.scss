@@ -1,0 +1,169 @@
+@use "../abstracts/" as *;
+
+#Home {
+    // fallback
+    height: 100vh;
+    height: 100dvh;
+
+    position: relative;
+
+    //? ______________________________________________
+    .row {
+        align-content: center;
+
+        .part1 {
+
+            h1 {
+                font-size: 65px;
+                color: $firstColor;
+                line-height: initial;
+
+                @include respond(350) {
+                    font-size: 30px;
+                }
+
+                @include respond(650) {
+                    font-size: 40px;
+                }
+
+                @include respond(850) {
+                    font-size: 50px;
+                }
+
+                @include respond(1050) {
+                    font-size: 60px;
+                }
+            }
+
+            // -------------------------------------
+            .cd-headline {
+
+                font: {
+                    size: 20px;
+                    weight: 500;
+                }
+
+                color: $secondColor;
+
+                &.clip {
+
+                    .cd-words-wrapper::after {
+                        background-color: $secondColor;
+                    }
+                }
+
+                @include respond(350) {
+                    font: {
+                        size: 16px;
+                        weight: initial;
+                    }
+                }
+
+                @include respond(650) {
+                    font: {
+                        size: 20px;
+                        weight: 500;
+                    }
+                }
+            }
+
+            // -------------------------------------
+            .play-video {
+
+                a {
+
+                    @include distance(45px, 45px);
+                    @include flex();
+
+                    color: $firstColor;
+                    position: relative;
+                    transition: 0.5s;
+
+
+                    &::before {
+                        @include createEle(100%, 100%);
+                        @include position($z: -1);
+
+                        background: $firstColor;
+                        border-radius: 50%;
+                        transform: scale(0);
+                        transition: 0.5s;
+                    }
+
+                    &:hover {
+                        color: #fff;
+                    }
+
+                    &:hover::before {
+                        transform: scale(1);
+                    }
+                }
+
+            }
+
+
+
+        }
+
+        // ______________________________________________
+
+        .part2 {
+            img {
+                @include respond(350) {
+                    width: 250px;
+                }
+
+                @include respond(850) {
+                    width: 350px;
+                }
+
+                @include respond(1050) {
+                    width: initial;
+                }
+            }
+
+        }
+    }
+
+
+    //? ______________________________________________
+
+    .arrows {
+        @include position(absolute, null, null, 10%, 50%, 3);
+        transform: translateX(-50%);
+
+        img {
+            width: 25px;
+            display: inline-block;
+            vertical-align: baseline;
+
+            @for $i from 1 through 3 {
+                &:nth-of-type(#{$i}) {
+                    animation: fade-down#{$i} 2s infinite;
+                }
+            }
+
+            &:not(:first-child) {
+                @include position(absolute, 0, null, null, 0);
+            }
+        }
+    }
+
+    //? ______________________________________________
+
+    >img {
+        @include position (absolute, null, null, 0, 0);
+        width: 100%;
+        transform: rotate(180deg);
+
+        @include respond(350) {
+            height: 100px;
+        }
+
+        @include respond(850) {
+            height: initial;
+        }
+    }
+
+
+}

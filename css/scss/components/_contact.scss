@@ -1,0 +1,100 @@
+@use "../abstracts/" as *;
+
+
+#Contact_Us {
+
+    // fallback
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    @include flex();
+
+    background: url('../images/contact-bg.png') no-repeat center/cover;
+    position: relative;
+
+    &::before {
+        @include createEle(100%, 100%);
+        @include position(absolute, 0, null, null, 0);
+
+        background: radial-gradient(#68b703cc, #305d00cc);
+    }
+
+    .container {
+        position: relative;
+
+        .title {
+            p {
+                @include respond(350) {
+                    max-width: 260px;
+                    margin: auto;
+                }
+
+                @include respond(650) {
+                    max-width: 300px;
+                }
+
+                @include respond(850) {
+                    max-width: initial;
+                }
+            }
+        }
+
+        .content {
+            .row {
+
+                @include respond(450) {
+                    max-width: 400px;
+                    margin: auto;
+                }
+
+                @include respond(650) {
+                    max-width: 500px;
+                }
+
+                @include respond(850) {
+                    max-width: initial;
+                }
+
+                .part1 {
+                    form {
+                        .box {
+                            textarea {
+                                resize: none;
+                            }
+
+                            button {
+                                background: $secondColor;
+                                color: #fff;
+                                padding: 10px 20px;
+                            }
+                        }
+                    }
+
+                }
+
+                .part2 {
+                    .box:last-child {
+                        a {
+                            border-radius: 50%;
+                            @include distance(40px, 40px);
+                            @include flex();
+                            color: #fff;
+
+                            &:nth-of-type(1) {
+                                background: #0045B5;
+                            }
+
+                            &:nth-of-type(2) {
+                                background: #C52661;
+                            }
+
+                            &:nth-of-type(3) {
+                                background: #F70000;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,249 @@
+@use "../abstracts/" as *;
+
+.popup {
+    display: none;
+
+    @include position(fixed, 0, null, null, 0, 1000);
+    @include distance(100%, 100%);
+
+    background: $secondColorAlpha;
+    backdrop-filter: blur(10px);
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $secondColor;
+        border-radius: 5px;
+        cursor: grab;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #fff;
+    }
+
+    &::selection {
+        background: $secondColor;
+    }
+
+    .box {
+        background: #fff;
+        width: 90%;
+        margin: 50px auto;
+        box-shadow: 0 0 5px $secondColor;
+
+        .popup-head {
+            position: relative;
+            letter-spacing: 1px;
+
+            i {
+                @include position(absolute, 50%, 20px, null, null, null);
+                transform: translateY(-50%);
+                color: $secondColor;
+                cursor: pointer;
+            }
+        }
+
+        hr {
+            margin: 0;
+            border-top: $secondColor solid;
+        }
+
+        .popup-body {
+            ol li::marker {
+                color: $secondColor;
+                font-weight: 700;
+            }
+        }
+
+        @include respond(350) {
+            width: 100%;
+        }
+
+        @include respond(450) {
+            width: 90%;
+        }
+
+        @include respond(1050) {
+            max-width: 630px;
+        }
+
+        @include respond(1250) {
+            max-width: initial;
+        }
+    }
+
+    // ---------------------------------------------
+    &[data-popup-name="video"] {
+
+        background: $firstColorAlpha;
+
+        .box {
+            width: 60%;
+            box-shadow: none;
+            background: #000;
+            margin: auto;
+
+            position: relative;
+
+            i {
+                @include position(absolute, -40px, 0px, null, null, null);
+                color: #fff;
+                cursor: pointer;
+
+                @include respond(350) {
+                    top: -30px;
+                }
+
+                @include respond(450) {
+                    top: -35px;
+                }
+
+                @include respond(650) {
+                    top: -40px;
+                }
+            }
+
+            iframe {
+                vertical-align: middle;
+                width: 100%;
+                min-height: 400px;
+            }
+
+
+            @include respond(350) {
+                width: 100%;
+            }
+
+            @include respond(450) {
+                width: 90%;
+            }
+
+            @include respond(1250) {
+                width: 60%;
+            }
+
+        }
+    }
+
+    // ---------------------------------------------
+
+    &[data-popup-name="sectors"] {
+        background: $firstColorAlpha;
+
+        &::-webkit-scrollbar-thumb {
+            background: $firstColor;
+        }
+
+        .box {
+            box-shadow: 0 0 5px $firstColor;
+
+            .popup-head {
+                i {
+                    color: $firstColor;
+                }
+            }
+
+            hr {
+                border-top: $firstColor solid;
+            }
+
+            .popup-body {
+                .item {
+                    background: $firstColorLight;
+
+                    img {
+                        max-width: 70px;
+                    }
+
+                    p {
+                        background: #dfeee2;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+
+    // ---------------------------------------------
+
+    &[data-popup-name="languages"] {
+        background: $firstColorAlpha;
+        overflow-x: hidden;
+
+        &::-webkit-scrollbar-thumb {
+            background: $firstColor;
+        }
+
+        .box {
+            // fallback
+            min-height: 100vh;
+            min-height: 100dvh;
+
+            margin: 0;
+            box-shadow: none;
+            @include position(absolute, 0, 0 null, null);
+
+            transform: translateX(100%);
+            transition: 0.5s;
+
+            width: 450px;
+
+            @include respond(350) {
+                width: 250px;
+            }
+
+            @include respond(450) {
+                width: 300px;
+            }
+
+            @include respond(650) {
+                width: 400px;
+            }
+
+            &.show {
+                transform: translateX(0%);
+            }
+
+
+            >i {
+                @include position(absolute, 20px, 20px, null, null, null);
+                color: $firstColor;
+                cursor: pointer;
+            }
+
+            .section:nth-of-type(odd) {
+
+                &::selection {
+                    background: $firstColor;
+                }
+
+                h5,
+                i {
+                    color: $firstColor;
+                }
+
+            }
+
+            .section:nth-of-type(even) {
+
+                &::selection {
+                    background: $secondColor;
+                }
+
+                h5,
+                i {
+                    color: $secondColor;
+                }
+            }
+
+            .section:last-child{
+                ul{
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}

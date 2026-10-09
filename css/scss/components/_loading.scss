@@ -1,0 +1,17 @@
+@use "../abstracts/" as *;
+
+#LoadingPage {
+
+    @include position (fixed,0,null,null,0,2000);
+    @include distance(100%, 100%);
+    @include flex();
+    background: linear-gradient(to right, rgb(234, 234, 234), rgb(219, 219, 219), rgb(242, 242, 242), rgb(173, 169, 150));
+
+
+    .box {
+        img {
+            animation: zoom-in-out 1s infinite linear alternate;
+
+        }
+    }
+}

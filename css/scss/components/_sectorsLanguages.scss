@@ -1,0 +1,101 @@
+@use "../abstracts/" as *;
+
+#Languages_Sectors {
+
+    .part1 {
+        background: url('../images/youth.jpg') no-repeat center/cover fixed;
+        position: relative;
+        min-height: 300px;
+
+        &::before {
+            @include createEle(100%, 100%);
+            @include position(absolute, 0, null, null, 0);
+
+            background: radial-gradient(#68b703cc, #305d00cc);
+        }
+
+        .container {
+            position: relative;
+
+            .title {
+                h2 {
+                    @include respond(350) {
+                        font-size: 25px;
+                    }
+
+                    @include respond(650) {
+                        font-size: 35px;
+                    }
+                }
+
+            }
+
+            button {
+                background: #fff;
+                padding: 10px 20px;
+                transition: 0.5s;
+                border: 0;
+
+                &:hover {
+                    color: $secondColor;
+                    transform: translateY(-5px);
+                }
+
+            }
+        }
+    }
+// --------------------------------------------------------
+    .part2 {
+        .container {
+            .title {
+                h2 {
+                    @include respond(350) {
+                        font-size: 25px;
+                    }
+
+                    @include respond(650) {
+                        font-size: 35px;
+                    }
+                }
+
+            }
+
+            .content {
+                img {
+                    max-width: 80%;
+                    margin: auto;
+                }
+
+                .owl-carousel {
+                    .owl-stage {
+                        margin-bottom: 30px;
+                        @include flex();
+                    }
+
+                    .owl-dots {
+                        @include flex();
+                        column-gap: 15px;
+
+                        button.owl-dot {
+
+                            span {
+                                display: block;
+                                @include distance(10px, 10px);
+                                border-radius: 50%;
+                                background: #ee5e00;
+                                opacity: .5;
+                            }
+
+                            &.active {
+                                span {
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

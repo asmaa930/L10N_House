@@ -1,0 +1,18 @@
+@use "../abstracts/" as *;
+
+#About_Us {
+    .content {
+        @include respond(450) {
+            .row {
+                width: 90%;
+                margin: auto;
+            }
+        }
+
+        @include respond(1050) {
+            .row {
+                width: 100%;
+            }
+        }
+    }
+}

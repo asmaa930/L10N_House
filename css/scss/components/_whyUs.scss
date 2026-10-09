@@ -1,0 +1,89 @@
+@use "../abstracts/" as *;
+
+#Why_Us {
+
+    &::selection {
+        background: $secondColor;
+    }
+
+    .content {
+        .wrapper {
+
+            &:nth-of-type(1) {
+                .box .item {
+                    background: linear-gradient(0deg, #1e2022 0%, transparent 75%), url('../images/best.jpg') no-repeat center/cover;
+                }
+            }
+
+            &:nth-of-type(2) {
+                .box .item {
+                    background: linear-gradient(0deg, #1e2022 0%, transparent 75%), url('../images/solutions.jpg') no-repeat center/cover;
+                }
+            }
+
+            &:nth-of-type(3) {
+                .box .item {
+                    background: linear-gradient(0deg, #1e2022 0%, transparent 75%), url('../images/teamwork.jpg') no-repeat center/cover;
+                }
+            }
+
+            .box {
+                background: $secondColor;
+                max-width: 350px;
+                margin: auto;
+
+                .item {
+                    min-height: 450px;
+                    @include flex(end, start, column);
+                    transition: 0.5s;
+
+
+                    &:hover {
+                        transform: translate(-10px, 10px);
+                    }
+                }
+
+                //! ------------------------------------ Responsive ------------------------------------
+
+                @include respond(350) {
+                    max-width: 280px;
+
+                    .item {
+                        h4 {
+                            font-size: 18px;
+                        }
+
+                        p {
+                            font-size: 14px;
+                        }
+                    }
+                }
+
+                @include respond(450) {
+                    max-width: 300px;
+                }
+
+                @include respond(650) {
+                    max-width: 320px;
+
+                    .item {
+                        p {
+                            font-size: 16px;
+                        }
+                    }
+                }
+
+                @include respond(1250) {
+                    max-width: 350px;
+
+                    .item {
+                        h4 {
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

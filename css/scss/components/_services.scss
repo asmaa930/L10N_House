@@ -1,0 +1,44 @@
+@use "../abstracts/" as *;
+
+#Services {
+    .box {
+        .item {
+            max-width: 90%;
+            margin: auto;
+            transition: 0.5s;
+
+            &:hover {
+                background: #fff;
+                transform: translateY(-10px);
+                box-shadow: 0 20px 50px #00000080;
+            }
+
+            p {
+                .service-opener {
+                    cursor: pointer;
+                }
+            }
+
+            //! ------------------------------------ Responsive ------------------------------------
+            @include respond(350) {
+                max-width: 100%;
+            }
+
+            @include respond(450) {
+                max-width: 350px;
+            }
+
+            @include respond(850) {
+                max-width: 90%;
+            }
+
+            // !------------------------------------
+        }
+
+        img {
+            width: 65px;
+        }
+
+
+    }
+}
