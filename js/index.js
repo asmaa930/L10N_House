@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-// !------------------------------------------------------------------
+// !------------------------------------------------------------------   //! ????????????????? wow not work
 
 (async function () {
     let response = await fetch('https://semicode.tech/api/v1/l10nhouse/sectors'),
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             <div class="col-md-6 col-xl-3">
                 <div class="item rounded-3 p-3 text-center">
-                    <img src="images/sec/${sector.icon}" alt="${sector.name}" class="img-fluid wow animate__jello" data-wow-duration-"0.5s">   //! ????????????????? wow not work
+                    <img src="images/sec/${sector.icon}" alt="${sector.name}" class="img-fluid wow animate__jello" data-wow-duration-"0.5s"> 
                     <p class="mb-0 mt-3 text-dark rounded-1">${sector.name}</p>
                 </div>
             </div>
