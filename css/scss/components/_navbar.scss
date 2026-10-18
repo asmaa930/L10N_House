@@ -2,7 +2,7 @@
 
 nav.navbar {
 
-    @include position(fixed, 0px, null, null, 0px, 100);
+    @include position(fixed, 0px, null, null, 0px, 110);
     width: 100%;
     transition: 0.5s;
 
@@ -134,6 +134,7 @@ nav.navbar {
             color: $firstColor;
             font-weight: 500;
             position: relative;
+            cursor: pointer;
 
             &.active,
             &.show {

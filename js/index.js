@@ -10,9 +10,12 @@ let services = null,
 // !------------------------------------------------------------------
 checkNavOnScroll();
 
+
 new WOW({
     animateClass: 'animate__animated',
 }).init();
+
+// !------------------------------------------------------------------
 
 $(document).ready(function () {
 
@@ -69,8 +72,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         i = 0;
 
-    console.log(services);
-
     for (let service of services) {
         $('#Services .row').append(`
 
@@ -86,12 +87,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
         i++;
     }
+
 })();
+
+
 
 // !------------------------------------------------------------------
 
 (async function () {
-    let response = await fetch('https://semicode.tech/api/v1/l10nhouse/languages'),
+    let response = await fetch('https://semicode.tech/api/v1/l10nhouse/sectors'),
         sectors = await response.json(),
 
         i = 0;
@@ -101,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             <div class="col-md-6 col-xl-3">
                 <div class="item rounded-3 p-3 text-center">
-                    <img src="images/sec/${sector.icon}" alt="${sector.name}" class="img-fluid">
+                    <img src="images/sec/${sector.icon}" alt="${sector.name}" class="img-fluid wow animate__jello" data-wow-duration-"0.5s">   //! ????????????????? wow not work
                     <p class="mb-0 mt-3 text-dark rounded-1">${sector.name}</p>
                 </div>
             </div>
@@ -198,11 +202,35 @@ scrollTopBtn.click(function () {
     window.scrollTo(0, 0);
 });
 
-// !------------------------------------------------------------------
+// !------------------------------------------------------------------   //! ?????????????????
 
 //? navbar links , arrows down , anchor scroll to video section
-$('nav .nav-link , .arrows , a[href="#Video"]').click(function (e) {
-    e.preventDefault();
-    scrollToSection($(this));
-});
+// $('nav .nav-link[href] , .arrows , a[href="#Video"]').click(function (e) {
+//     e.preventDefault();
 
+
+//     if ($(this).parents('.navbar-collapse').hasClass('show')) {
+//         $(".navbar-toggler").click();
+//     }
+//     scrollToSection($(this));
+// });
+
+
+// //? Navbar links, down arrows, and the anchor link to the video section
+$('nav .nav-link[href], .arrows, a[href="#Video"]').click(function (e) {
+    e.preventDefault();
+
+    let timeFunction = 1;
+
+    if (window.scrollY < 25 && ($(this).attr('href') != '#Home')) {
+        scrollTo(0, 25);
+        timeFunction = 80;
+    }
+
+    setTimeout(() => {
+
+        navbarHeight_1 = $("nav").outerHeight();
+
+        scrollToSection($(this));
+    }, timeFunction);
+});

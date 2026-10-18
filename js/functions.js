@@ -14,7 +14,7 @@ function openPopup(popupName) {
     $('body').css('overflow-y', 'hidden');
 
     $popup.fadeIn(500, function () {
-        
+
         if (popupName == 'languages') {
             $(this).find('.box').addClass('show');
         }
@@ -136,11 +136,20 @@ function checkNavOnScroll() {
 //! _________________________________________________________     
 
 
+// function scrollToSection(that) {
+
+//     let $sectionId = that.attr('href'),
+//         $section = $($sectionId),
+//         $sectionOffsetTop = $section.offset().top;
+
+//     window.scrollTo(0, $sectionOffsetTop - navbarHeight_1 + 32);     //! ????????????????? 32
+// }
+
 function scrollToSection(that) {
 
     let $sectionId = that.attr('href'),
         $section = $($sectionId),
         $sectionOffsetTop = $section.offset().top;
 
-    window.scrollTo(0, $sectionOffsetTop - navbarHeight_1 + 32);     //! ????????????????? 32
+    window.scrollTo(0, $sectionOffsetTop - navbarHeight_1);     //! ????????????????? 32
 }

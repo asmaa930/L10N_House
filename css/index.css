@@ -355,7 +355,7 @@ nav.navbar {
   position: fixed;
   top: 0px;
   left: 0px;
-  z-index: 100;
+  z-index: 110;
   width: 100%;
   transition: 0.5s;
 }
@@ -461,6 +461,7 @@ nav.navbar .navbar-collapse .nav-link {
   color: #76A244;
   font-weight: 500;
   position: relative;
+  cursor: pointer;
 }
 nav.navbar .navbar-collapse .nav-link.active, nav.navbar .navbar-collapse .nav-link.show {
   color: #76A244;
@@ -562,6 +563,7 @@ nav.navbar .navbar-collapse .nav-link:hover::after, nav.navbar .navbar-collapse 
   color: #76A244;
   position: relative;
   transition: 0.5s;
+  border-radius: 50%;
 }
 #Home .row .part1 .play-video a::before {
   content: "";
@@ -829,7 +831,7 @@ nav.navbar .navbar-collapse .nav-link:hover::after, nav.navbar .navbar-collapse 
   }
 }
 #Languages_Sectors .part2 .container .content img {
-  max-width: 80%;
+  max-width: 130px;
   margin: auto;
 }
 #Languages_Sectors .part2 .container .content .owl-carousel .owl-stage {
