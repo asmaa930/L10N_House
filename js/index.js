@@ -57,9 +57,11 @@ $(document).ready(function () {
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    landingPage.fadeOut(1000, function () {
-        body.attr('style', 'overflow-y:auto');
-    });
+    setTimeout(function () {
+        landingPage.fadeOut(1000, function () {
+            body.attr('style', 'overflow-y:auto');
+        });
+    }, 500);
 
 });
 
@@ -92,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-// !------------------------------------------------------------------   //! ????????????????? wow not work
+// !------------------------------------------------------------------ 
 
 (async function () {
     let response = await fetch('https://semicode.tech/api/v1/l10nhouse/sectors'),
@@ -105,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             <div class="col-md-6 col-xl-3">
                 <div class="item rounded-3 p-3 text-center">
-                    <img src="images/sec/${sector.icon}" alt="${sector.name}" class="img-fluid wow animate__jello" data-wow-duration-"0.5s"> 
+                    <img src="images/sec/${sector.icon}" alt="${sector.name}" class="img-fluid"> 
                     <p class="mb-0 mt-3 text-dark rounded-1">${sector.name}</p>
                 </div>
             </div>
@@ -156,7 +158,8 @@ $(document).on('scroll', function () {
             sectionId = $section.attr('id'),
             sectionTop = $section.offset().top,
             sectionBottom = sectionTop + $section.outerHeight(),
-            navbarHeight_2 = $('nav').outerHeight(),
+
+            navbarHeight_2 = $('nav').outerHeight() + 10,
             scrollY = window.scrollY + navbarHeight_2;
 
         if (scrollY > sectionTop && scrollY < sectionBottom) {
@@ -165,9 +168,7 @@ $(document).on('scroll', function () {
         }
     });
 
-
     // !----------- scrollTopBtn --------------
-
 
     if ((window.scrollY <= window.innerHeight / 2) && !isHovered) {
         scrollTopBtn.addClass('hide');
@@ -202,35 +203,16 @@ scrollTopBtn.click(function () {
     window.scrollTo(0, 0);
 });
 
-// !------------------------------------------------------------------   //! ?????????????????
+// !------------------------------------------------------------------ 
 
 //? navbar links , arrows down , anchor scroll to video section
-// $('nav .nav-link[href] , .arrows , a[href="#Video"]').click(function (e) {
-//     e.preventDefault();
-
-
-//     if ($(this).parents('.navbar-collapse').hasClass('show')) {
-//         $(".navbar-toggler").click();
-//     }
-//     scrollToSection($(this));
-// });
-
-
-// //? Navbar links, down arrows, and the anchor link to the video section
-$('nav .nav-link[href], .arrows, a[href="#Video"]').click(function (e) {
+$('nav .nav-link[href] , .arrows , a[href="#Video"]').click(function (e) {
     e.preventDefault();
 
-    let timeFunction = 1;
 
-    if (window.scrollY < 25 && ($(this).attr('href') != '#Home')) {
-        scrollTo(0, 25);
-        timeFunction = 80;
+    if ($(this).parents('.navbar-collapse').hasClass('show')) {
+        $(".navbar-toggler").click();
     }
-
-    setTimeout(() => {
-
-        navbarHeight_1 = $("nav").outerHeight();
-
-        scrollToSection($(this));
-    }, timeFunction);
+    scrollToSection($(this));
 });
+

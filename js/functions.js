@@ -136,20 +136,11 @@ function checkNavOnScroll() {
 //! _________________________________________________________     
 
 
-// function scrollToSection(that) {
-
-//     let $sectionId = that.attr('href'),
-//         $section = $($sectionId),
-//         $sectionOffsetTop = $section.offset().top;
-
-//     window.scrollTo(0, $sectionOffsetTop - navbarHeight_1 + 32);     //! ????????????????? 32
-// }
-
 function scrollToSection(that) {
 
     let $sectionId = that.attr('href'),
         $section = $($sectionId),
         $sectionOffsetTop = $section.offset().top;
 
-    window.scrollTo(0, $sectionOffsetTop - navbarHeight_1);     //! ????????????????? 32
+    window.scrollTo(0, $sectionOffsetTop - navbarHeight_1 + 35);
 }
